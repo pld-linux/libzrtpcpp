@@ -1,4 +1,5 @@
 Summary:	GNU RTP stack for the zrtp protocol specification
+Summary(pl):	Stos GNU RTP dla specyfikacji protoko³u zrtp
 Name:		libzrtpcpp
 Version:	0.9.0
 Release:	1
@@ -16,6 +17,12 @@ This library is a GPL licensed extension to the GNU RTP Stack, ccrtp,
 that offers compatibility with Phil Zimmermann's zrtp/Zfone voice
 encryption, and which can be directly embedded into telephony
 applications.
+
+%description -l pl
+Ta biblioteka jest licencjonowanym na GPL rozszerzeniem stosu GNU RTP
+- ccrtp - oferuj±cym kompatybilno¶æ z szyfrowaniem g³osu zrtp/Zfont
+Phila Zimmermanna i mog±cym byæ bezpo¶rednio w³±czone do aplikacji
+telefonicznych.
 
 %package devel
 Summary:	Header files for libzrtpcpp library
