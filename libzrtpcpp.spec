@@ -1,5 +1,5 @@
 Summary:	GNU RTP stack for the zrtp protocol specification
-Summary(pl):	Stos GNU RTP dla specyfikacji protoko³u zrtp
+Summary(pl.UTF-8):   Stos GNU RTP dla specyfikacji protokoÅ‚u zrtp
 Name:		libzrtpcpp
 Version:	0.9.0
 Release:	2
@@ -18,15 +18,15 @@ that offers compatibility with Phil Zimmermann's zrtp/Zfone voice
 encryption, and which can be directly embedded into telephony
 applications.
 
-%description -l pl
+%description -l pl.UTF-8
 Ta biblioteka jest licencjonowanym na GPL rozszerzeniem stosu GNU RTP
-- ccrtp - oferuj±cym kompatybilno¶æ z szyfrowaniem g³osu zrtp/Zfont
-Phila Zimmermanna i mog±cym byæ bezpo¶rednio w³±czone do aplikacji
+- ccrtp - oferujÄ…cym kompatybilnoÅ›Ä‡ z szyfrowaniem gÅ‚osu zrtp/Zfont
+Phila Zimmermanna i mogÄ…cym byÄ‡ bezpoÅ›rednio wÅ‚Ä…czone do aplikacji
 telefonicznych.
 
 %package devel
 Summary:	Header files for libzrtpcpp library
-Summary(pl):	Pliki nag³ówkowe biblioteki libzrtpcpp
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libzrtpcpp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	commoncpp2-devel
@@ -34,19 +34,19 @@ Requires:	commoncpp2-devel
 %description devel
 Header files for libzrtpcpp library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki libzrtpcpp.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki libzrtpcpp.
 
 %package static
 Summary:	Static libzrtpcpp library
-Summary(pl):	Statyczna biblioteka libzrtpcpp
+Summary(pl.UTF-8):   Statyczna biblioteka libzrtpcpp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libzrtpcpp library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libzrtpcpp.
 
 %prep
