@@ -1,5 +1,5 @@
 Summary:	GNU RTP stack for the zrtp protocol specification
-Summary(pl.UTF-8):   Stos GNU RTP dla specyfikacji protokołu zrtp
+Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
 Version:	0.9.0
 Release:	2
@@ -26,7 +26,7 @@ telefonicznych.
 
 %package devel
 Summary:	Header files for libzrtpcpp library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libzrtpcpp
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libzrtpcpp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	commoncpp2-devel
@@ -39,7 +39,7 @@ Pliki nagłówkowe biblioteki libzrtpcpp.
 
 %package static
 Summary:	Static libzrtpcpp library
-Summary(pl.UTF-8):   Statyczna biblioteka libzrtpcpp
+Summary(pl.UTF-8):	Statyczna biblioteka libzrtpcpp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
