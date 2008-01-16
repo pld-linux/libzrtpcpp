@@ -1,0 +1,12 @@
+diff -urN libzrtpcpp-1.0.0.org/src/Makefile.am libzrtpcpp-1.0.0/src/Makefile.am
+--- libzrtpcpp-1.0.0.org/src/Makefile.am	2007-09-26 16:18:23.000000000 +0200
++++ libzrtpcpp-1.0.0/src/Makefile.am	2008-01-16 08:39:43.783400511 +0100
+@@ -5,8 +5,6 @@
+ lib_LTLIBRARIES = libzrtpcpp.la
+ # libzrtpcpp_la_LIBADD = @LIBS@
+ 
+-libzrtpcpp_la_LDFLAGS = $(RELEASE)
+-
+ # http://www.gnu.org/software/libtool/manual.html
+ 
+ if ZRTP_OPENSSL
