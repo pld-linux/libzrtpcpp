@@ -9,8 +9,11 @@ Source0:	ftp://ftp.gnu.org/pub/gnu/ccrtp/%{name}-%{version}.tar.gz
 # Source0-md5:	ddc7d87fd539bab20114619f00c9f350
 Patch0:		%{name}-build.patch
 URL:		http://wiki.gnutelephony.org/index.php/GNU_ccRTP
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	ccrtp-devel >= 1.5.1
 BuildRequires:	doxygen
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
