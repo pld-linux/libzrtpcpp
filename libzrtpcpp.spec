@@ -3,17 +3,21 @@ Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
 Version:	1.0.0
 Release:	1
-License:	GPL
+License:	GPL v3+
 Group:		Libraries
-Source0:	ftp://ftp.gnu.org/pub/gnu/ccrtp/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
 # Source0-md5:	ddc7d87fd539bab20114619f00c9f350
 Patch0:		%{name}-build.patch
 URL:		http://wiki.gnutelephony.org/index.php/GNU_ccRTP
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	ccrtp-devel >= 1.5.1
+BuildRequires:	commoncpp2-devel >= 1.3.0
 BuildRequires:	doxygen
+BuildRequires:	libgcrypt-devel >= 1.2.3
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,7 +37,10 @@ Summary:	Header files for libzrtpcpp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libzrtpcpp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	commoncpp2-devel
+Requires:	ccrtp-devel >= 1.5.1
+Requires:	commoncpp2-devel >= 1.3.0
+Requires:	libgcrypt-devel >= 1.2.3
+Requires:	libstdc++-devel
 
 %description devel
 Header files for libzrtpcpp library.
@@ -61,6 +68,7 @@ Statyczna biblioteka libzrtpcpp.
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make}
@@ -80,15 +88,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libzrtpcpp.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libzrtpcpp.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libzrtpcpp.so
+%{_libdir}/libzrtpcpp.la
 %{_includedir}/libzrtpcpp
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libzrtpcpp.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libzrtpcpp.a
