@@ -5,7 +5,7 @@ Version:	1.3.0
 Release:	2
 License:	GPL v3+
 Group:		Libraries
-Source0:	ftp://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
 # Source0-md5:	e2abd4f7cf68496d0772dd7e5a71873a
 Patch0:		%{name}-build.patch
 URL:		http://wiki.gnutelephony.org/index.php/GNU_ccRTP
