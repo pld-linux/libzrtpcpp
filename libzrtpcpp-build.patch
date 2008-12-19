@@ -27,42 +27,18 @@ diff -urN libzrtpcpp-1.3.0.org/configure.ac libzrtpcpp-1.3.0/configure.ac
 diff -urN libzrtpcpp-1.3.0.org/configure.ac libzrtpcpp-1.3.0/configure.ac
 --- libzrtpcpp-1.3.0.org/configure.ac	2008-06-14 15:34:15.000000000 +0200
 +++ libzrtpcpp-1.3.0/configure.ac	2008-08-23 13:07:25.837343793 +0200
-@@ -10,26 +10,26 @@
- #
- AC_INIT(src/ZRtp.cxx)
- 
--# LT_VERSION actually is meant to be in the form ABI-LINK_VER:ABI_PATCH_VER. 
-+# TW_LT_VERSION actually is meant to be in the form ABI-LINK_VER:ABI_PATCH_VER. 
- # This eventaully goes into libtool as "version-info" (via LT_CCXX_VERSION in
--# Makefile.am). LT_RELEASE goes into libtool as "release".
-+# Makefile.am). TW_LT_RELEASE goes into libtool as "release".
- #
- # Hence, if the binary api is not changed for a given release, 1.0.0 should have:
- #
- # VERSION=1.0.0
--# LT_RELEASE=1.0
--# LT_VERSION=0:0
-+# TW_LT_RELEASE=1.0
-+# TW_LT_VERSION=0:0
- #
--# VERSION=1.0.1 might have either LT_VERSION=0:1 if binary linking remains 
--# unchanged, or LT_VERSION=1:0 if binary linking is changed.
-+# VERSION=1.0.1 might have either TW_LT_VERSION=0:1 if binary linking remains 
-+# unchanged, or TW_LT_VERSION=1:0 if binary linking is changed.
- # (see macros "OST_PROG_LIBVER" and "OST_PROG_LIBRARY" below)
- #
- VERSION="1.3.0"
+@@ -28,8 +28,8 @@
  # AC_INIT([libzrtpcpp], [1.0.0] )
  # AC_CONFIG_SRCDIR([configure.ac])
  
--LT_RELEASE="1.3"
--LT_VERSION="0:0"
-+TW_LT_RELEASE="1.3"
-+TW_LT_VERSION="0:0"
+-LT_RELEASE="1.4"
+-LT_VERSION="0:1"
++TW_LT_RELEASE="1.4"
++TW_LT_VERSION="0:1"
  
  REQUIRES="1.3.0"
  
-@@ -125,7 +125,7 @@
+@@ -129,7 +129,7 @@
  
  OST_PROG_COMMON
  OST_PROG_LIBVER
@@ -71,6 +47,17 @@ diff -urN libzrtpcpp-1.3.0.org/configure.ac libzrtpcpp-1.3.0/configure.ac
  OST_AUTOMAKE_MODE
  OST_MAINTAINER_MODE
  # OST_CC_ENDIAN - now in Common C++
+@@ -178,8 +178,8 @@
+ AC_SUBST(DOXYGEN)
+ AM_CONDITIONAL(DOXY, test "$DOXYGEN" != "no")
+ 
+-LIB_VERSION=`echo $LT_RELEASE | sed -e 's/[\.]/_/'` 
+-LIB_MAJOR=`echo $LT_VERSION | sed -e 's/[:].*$//'`
++LIB_VERSION=`echo $TW_LT_RELEASE | sed -e 's/[\.]/_/'` 
++LIB_MAJOR=`echo $TW_LT_VERSION | sed -e 's/[:].*$//'`
+ 
+ AC_SUBST(LIB_VERSION)
+ AC_SUBST(LIB_MAJOR)
 diff -urN libzrtpcpp-1.3.0.org/demo/Makefile.am libzrtpcpp-1.3.0/demo/Makefile.am
 --- libzrtpcpp-1.3.0.org/demo/Makefile.am	2008-04-13 15:00:50.000000000 +0200
 +++ libzrtpcpp-1.3.0/demo/Makefile.am	2008-08-23 13:07:28.027759162 +0200
