@@ -12,29 +12,15 @@ diff -urN libzrtpcpp-1.0.0.org/src/Makefile.am libzrtpcpp-1.0.0/src/Makefile.am
  if ZRTP_OPENSSL
 diff -urN libzrtpcpp-1.3.0.org/configure.ac libzrtpcpp-1.3.0/configure.ac
 --- libzrtpcpp-1.3.0.org/configure.ac	2008-06-14 15:34:15.000000000 +0200
-+++ libzrtpcpp-1.3.0/configure.ac	2008-08-23 13:04:33.287360894 +0200
-@@ -173,7 +173,9 @@
- AC_SUBST(DOXYGEN)
- AM_CONDITIONAL(DOXY, test "$DOXYGEN" != "no")
- 
--AC_SUBST(CRYPTOBACKEND PACKAGE_REQ BUILD_REQ)
-+AC_SUBST(CRYPTOBACKEND)
-+AC_SUBST(PACKAGE_REQ)
-+AC_SUBST(BUILD_REQ)
- AC_CONFIG_FILES([Makefile src/Makefile src/libzrtpcpp/Makefile m4/Makefile
-                 src/libzrtpcpp/crypto/Makefile doc/Makefile demo/Makefile
-                 libzrtpcpp.pc libzrtpcpp.spec])  # m4/Makefile
-diff -urN libzrtpcpp-1.3.0.org/configure.ac libzrtpcpp-1.3.0/configure.ac
---- libzrtpcpp-1.3.0.org/configure.ac	2008-06-14 15:34:15.000000000 +0200
 +++ libzrtpcpp-1.3.0/configure.ac	2008-08-23 13:07:25.837343793 +0200
 @@ -28,8 +28,8 @@
  # AC_INIT([libzrtpcpp], [1.0.0] )
  # AC_CONFIG_SRCDIR([configure.ac])
  
 -LT_RELEASE="1.4"
--LT_VERSION="0:1"
+-LT_VERSION="0:3"
 +TW_LT_RELEASE="1.4"
-+TW_LT_VERSION="0:1"
++TW_LT_VERSION="0:3"
  
  REQUIRES="1.3.0"
  
@@ -73,54 +59,6 @@ diff -urN libzrtpcpp-1.3.0.org/demo/Makefile.am libzrtpcpp-1.3.0/demo/Makefile.a
  AM_CXXFLAGS = @WARN_FLAGS@ -I$(top_srcdir)/src
  # ccxxincludedir=$(includedir)/cc++
  
-diff -urN libzrtpcpp-1.3.0.org/demo/Makefile.in libzrtpcpp-1.3.0/demo/Makefile.in
---- libzrtpcpp-1.3.0.org/demo/Makefile.in	2008-06-14 15:37:27.000000000 +0200
-+++ libzrtpcpp-1.3.0/demo/Makefile.in	2008-08-23 13:07:28.027759162 +0200
-@@ -129,7 +129,7 @@
- LT_CCXX_VERSION = @LT_CCXX_VERSION@
- LT_MAJOR = @LT_MAJOR@
- LT_MINOR = @LT_MINOR@
--LT_RELEASE = @LT_RELEASE@
-+TW_LT_RELEASE = @TW_LT_RELEASE@
- LT_SUBVER = @LT_SUBVER@
- MAINT = @MAINT@
- MAKEINFO = @MAKEINFO@
-@@ -209,9 +209,9 @@
- top_builddir = @top_builddir@
- top_srcdir = @top_srcdir@
- AUTOMAKE_OPTIONS = no-dependencies dist-shar
--LT_VERSION = @LT_CCXX_VERSION@
-+TW_LT_VERSION = @LT_CCXX_VERSION@
- #ignored for programs
--#$(LT_VERSION) -release $(LT_RELEASE)
-+#$(TW_LT_VERSION) -release $(TW_LT_RELEASE)
- AM_CXXFLAGS = @WARN_FLAGS@ -I$(top_srcdir)/src
- zrtptest_SOURCES = zrtptest.cpp
- zrtptest_LDFLAGS = ../src/libzrtpcpp.la
-diff -urN libzrtpcpp-1.3.0.org/doc/Makefile.in libzrtpcpp-1.3.0/doc/Makefile.in
---- libzrtpcpp-1.3.0.org/doc/Makefile.in	2008-06-14 15:37:27.000000000 +0200
-+++ libzrtpcpp-1.3.0/doc/Makefile.in	2008-08-23 13:07:28.034425891 +0200
-@@ -110,7 +110,7 @@
- LT_CCXX_VERSION = @LT_CCXX_VERSION@
- LT_MAJOR = @LT_MAJOR@
- LT_MINOR = @LT_MINOR@
--LT_RELEASE = @LT_RELEASE@
-+TW_LT_RELEASE = @TW_LT_RELEASE@
- LT_SUBVER = @LT_SUBVER@
- MAINT = @MAINT@
- MAKEINFO = @MAKEINFO@
-diff -urN libzrtpcpp-1.3.0.org/m4/Makefile.in libzrtpcpp-1.3.0/m4/Makefile.in
---- libzrtpcpp-1.3.0.org/m4/Makefile.in	2008-06-14 15:37:27.000000000 +0200
-+++ libzrtpcpp-1.3.0/m4/Makefile.in	2008-08-23 13:07:28.047345431 +0200
-@@ -107,7 +107,7 @@
- LT_CCXX_VERSION = @LT_CCXX_VERSION@
- LT_MAJOR = @LT_MAJOR@
- LT_MINOR = @LT_MINOR@
--LT_RELEASE = @LT_RELEASE@
-+TW_LT_RELEASE = @TW_LT_RELEASE@
- LT_SUBVER = @LT_SUBVER@
- MAINT = @MAINT@
- MAKEINFO = @MAKEINFO@
 diff -urN libzrtpcpp-1.3.0.org/m4/ost_prog.m4 libzrtpcpp-1.3.0/m4/ost_prog.m4
 --- libzrtpcpp-1.3.0.org/m4/ost_prog.m4	2006-09-10 20:40:24.000000000 +0200
 +++ libzrtpcpp-1.3.0/m4/ost_prog.m4	2008-08-23 13:07:28.047345431 +0200
@@ -138,18 +76,6 @@ diff -urN libzrtpcpp-1.3.0.org/m4/ost_prog.m4 libzrtpcpp-1.3.0/m4/ost_prog.m4
  	AC_SUBST(LT_SUBVER)
  	AC_SUBST(LT_MAJOR)
  	AC_SUBST(LT_MINOR)
-diff -urN libzrtpcpp-1.3.0.org/Makefile.in libzrtpcpp-1.3.0/Makefile.in
---- libzrtpcpp-1.3.0.org/Makefile.in	2008-06-14 15:37:27.000000000 +0200
-+++ libzrtpcpp-1.3.0/Makefile.in	2008-08-23 13:07:25.850676381 +0200
-@@ -144,7 +144,7 @@
- LT_CCXX_VERSION = @LT_CCXX_VERSION@
- LT_MAJOR = @LT_MAJOR@
- LT_MINOR = @LT_MINOR@
--LT_RELEASE = @LT_RELEASE@
-+TW_LT_RELEASE = @TW_LT_RELEASE@
- LT_SUBVER = @LT_SUBVER@
- MAINT = @MAINT@
- MAKEINFO = @MAKEINFO@
 diff -urN libzrtpcpp-1.3.0.org/src/Makefile.am libzrtpcpp-1.3.0/src/Makefile.am
 --- libzrtpcpp-1.3.0.org/src/Makefile.am	2008-03-16 12:53:33.000000000 +0100
 +++ libzrtpcpp-1.3.0/src/Makefile.am	2008-08-23 13:07:28.050676134 +0200
@@ -165,28 +91,4 @@ diff -urN libzrtpcpp-1.3.0.org/src/Makefile.am libzrtpcpp-1.3.0/src/Makefile.am
  lib_LTLIBRARIES = libzrtpcpp.la
  # libzrtpcpp_la_LIBADD = @LIBS@
  
-diff -urN libzrtpcpp-1.3.0.org/src/Makefile.in libzrtpcpp-1.3.0/src/Makefile.in
---- libzrtpcpp-1.3.0.org/src/Makefile.in	2008-06-14 15:37:27.000000000 +0200
-+++ libzrtpcpp-1.3.0/src/Makefile.in	2008-08-23 13:07:28.054009288 +0200
-@@ -167,7 +167,7 @@
- LT_CCXX_VERSION = @LT_CCXX_VERSION@
- LT_MAJOR = @LT_MAJOR@
- LT_MINOR = @LT_MINOR@
--LT_RELEASE = @LT_RELEASE@
-+TW_LT_RELEASE = @TW_LT_RELEASE@
- LT_SUBVER = @LT_SUBVER@
- MAINT = @MAINT@
- MAKEINFO = @MAKEINFO@
-@@ -246,9 +246,9 @@
- target_vendor = @target_vendor@
- top_builddir = @top_builddir@
- top_srcdir = @top_srcdir@
--LT_VERSION = @LT_CCXX_VERSION@
--RELEASE = $(LT_VERSION) -release $(LT_RELEASE)
--#RELEASE = $(LT_VERSION)
-+TW_LT_VERSION = @LT_CCXX_VERSION@
-+RELEASE = $(TW_LT_VERSION) -release $(TW_LT_RELEASE)
-+#RELEASE = $(TW_LT_VERSION)
- lib_LTLIBRARIES = libzrtpcpp.la
- # libzrtpcpp_la_LIBADD = @LIBS@
- libzrtpcpp_la_LDFLAGS = $(RELEASE)
+
