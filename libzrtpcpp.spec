@@ -1,23 +1,19 @@
 Summary:	GNU RTP stack for the zrtp protocol specification
 Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
-Version:	1.4.3
+Version:	2.0.0
 Release:	1
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
-# Source0-md5:	84386a596578a7c0c92c7b999a7f16f0
-Patch0:		%{name}-build.patch
-URL:		http://wiki.gnutelephony.org/index.php/GNU_ccRTP
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
-BuildRequires:	ccrtp-devel >= 1.7.1
-BuildRequires:	commoncpp2-devel >= 1.7.1
-BuildRequires:	doxygen
-BuildRequires:	libgcrypt-devel >= 1.2.3
+# Source0-md5:	dc1501e7e8a46a1608fc3820c7476727
+URL:		http://www.gnu.org/software/ccrtp/
+BuildRequires:	cmake >= 2.6
+BuildRequires:	ccrtp-devel >= 2.0.0
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
+BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	pkgconfig
+Requires:	ccrtp >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,10 +33,10 @@ Summary:	Header files for libzrtpcpp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libzrtpcpp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ccrtp-devel >= 1.5.1
-Requires:	commoncpp2-devel >= 1.3.0
-Requires:	libgcrypt-devel >= 1.2.3
+Requires:	ccrtp-devel >= 2.0.0
+Requires:	openssl-devel >= 0.9.8
 Requires:	libstdc++-devel
+Obsoletes:	libzrtpcpp-static
 
 %description devel
 Header files for libzrtpcpp library.
@@ -48,29 +44,11 @@ Header files for libzrtpcpp library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki libzrtpcpp.
 
-%package static
-Summary:	Static libzrtpcpp library
-Summary(pl.UTF-8):	Statyczna biblioteka libzrtpcpp
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static libzrtpcpp library.
-
-%description static -l pl.UTF-8
-Statyczna biblioteka libzrtpcpp.
-
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure
+%cmake .
 %{__make}
 
 %install
@@ -87,17 +65,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libzrtpcpp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libzrtpcpp.so.0
+%attr(755,root,root) %ghost %{_libdir}/libzrtpcpp.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libzrtpcpp.so
-%{_libdir}/libzrtpcpp.la
 %{_includedir}/libzrtpcpp
 %{_pkgconfigdir}/libzrtpcpp.pc
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libzrtpcpp.a
