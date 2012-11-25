@@ -1,18 +1,19 @@
 Summary:	GNU RTP stack for the zrtp protocol specification
 Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
-Version:	2.0.0
+Version:	2.3.2
 Release:	1
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/ccrtp/%{name}-%{version}.tar.gz
-# Source0-md5:	dc1501e7e8a46a1608fc3820c7476727
+# Source0-md5:	b5f0a72252785862133e9cbc9cbbd3f8
 URL:		http://www.gnu.org/software/ccrtp/
 BuildRequires:	cmake >= 2.6
 BuildRequires:	ccrtp-devel >= 2.0.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.0
 Requires:	ccrtp >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,6 +48,8 @@ Pliki nagłówkowe biblioteki libzrtpcpp.
 %prep
 %setup -q
 
+%{__sed} -i -e '/set(CMAKE_VERBOSE_MAKEFILE FALSE)/d' CMakeLists.txt
+
 %build
 %cmake .
 %{__make}
@@ -65,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %attr(755,root,root) %{_libdir}/libzrtpcpp.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libzrtpcpp.so.2
 
