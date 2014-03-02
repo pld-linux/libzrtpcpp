@@ -80,6 +80,7 @@ Summary(pl.UTF-8):	Podstawowe pliki nagłówkowe GNU ZRTP
 License:	LGPL v3+
 Group:		Libraries
 Requires:	libstdc++-devel
+Conflicts:	libzrtpcpp-devel < 4
 
 %description core-headers
 GNU ZRTP core header files.
