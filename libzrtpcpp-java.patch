@@ -1,0 +1,11 @@
+--- ZRTPCPP-4.1.2/clients/tivi/swigJava/SessionTest.java.orig	2014-01-09 13:11:21.000000000 +0100
++++ ZRTPCPP-4.1.2/clients/tivi/swigJava/SessionTest.java	2014-03-01 16:57:50.047307896 +0100
+@@ -139,7 +139,7 @@
+ 
+         session.setUserCallback(callback, CtZrtpSession.streamName.AudioStream);
+         session.setSendCallback(sendCallback, CtZrtpSession.streamName.AudioStream);
+-        session.getSignalingHelloHash(helloHash, CtZrtpSession.streamName.AudioStream);
++        session.getSignalingHelloHash(helloHash, CtZrtpSession.streamName.AudioStream, 0);
+ 
+         System.out.println("Our Hello hash: " + new String(helloHash));
+ 
