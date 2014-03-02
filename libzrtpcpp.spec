@@ -185,6 +185,12 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
+%post	core -p /sbin/ldconfig
+%postun	core -p /sbin/ldconfig
+
+%post	tivi -p /sbin/ldconfig
+%postun	tivi -p /sbin/ldconfig
+
 %if %{with ccrtp}
 %files
 %defattr(644,root,root,755)
