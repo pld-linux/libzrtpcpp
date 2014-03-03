@@ -95,7 +95,6 @@ License:	LGPL v3+
 Group:		Libraries
 Requires:	%{name}-core = %{version}-%{release}
 Requires:	%{name}-core-headers = %{version}-%{release}
-Requires:	ccrtp-devel >= 2.0.0
 #%{?with_openssl:Requires:	openssl-devel >= 0.9.8}
 
 %description core-devel
