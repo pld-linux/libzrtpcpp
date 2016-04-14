@@ -9,12 +9,13 @@
 Summary:	GNU RTP stack for the zrtp protocol specification
 Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
-Version:	4.4.0
-Release:	2
+Version:	4.6.3
+Release:	1
 License:	LGPL v3+ (core), GPL v3+ (CCRTP client), for reference (Tivi client)
 Group:		Libraries
+#Source0Download: https://github.com/wernerd/ZRTPCPP/releases
 Source0:	https://github.com/wernerd/ZRTPCPP/archive/V%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	cc03c9e09d396b82fbb58932b32485b1
+# Source0-md5:	ccfaab35e2103033d9c414fee3d46a75
 Patch0:		%{name}-java.patch
 URL:		http://www.gnutelephony.org/index.php/GNU_ZRTP
 BuildRequires:	cmake >= 2.6
@@ -194,7 +195,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with ccrtp}
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README.md
+%doc AUTHORS ChangeLog README.md
 %attr(755,root,root) %{_libdir}/libzrtpcpp.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libzrtpcpp.so.4
 
@@ -209,7 +210,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files core
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README.md
+%doc AUTHORS ChangeLog README.md
 %attr(755,root,root) %{_libdir}/libzrtpcppcore.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libzrtpcppcore.so.4
 
