@@ -10,7 +10,7 @@ Summary:	GNU RTP stack for the zrtp protocol specification
 Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
 Version:	4.6.3
-Release:	2
+Release:	3
 License:	LGPL v3+ (core), GPL v3+ (CCRTP client), for reference (Tivi client)
 Group:		Libraries
 #Source0Download: https://github.com/wernerd/ZRTPCPP/releases
