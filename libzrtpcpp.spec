@@ -3,14 +3,14 @@
 %bcond_without	ccrtp		# CCRTP client library
 %bcond_with	tivi		# Tivi client library (for reference)
 %bcond_with	java		# Java code for Tivi client library (test only)
-%bcond_without	openssl		# OpenSSL based cryptography (instead of standalone) for ccrtp
+%bcond_with	openssl		# OpenSSL based cryptography (instead of standalone) for ccrtp
 %bcond_with	sqlite		# use SQLite (3.x) for cache [always enabled for tivi]
 #
 Summary:	GNU RTP stack for the zrtp protocol specification
 Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
 Version:	4.6.3
-Release:	3
+Release:	4
 License:	LGPL v3+ (core), GPL v3+ (CCRTP client), for reference (Tivi client)
 Group:		Libraries
 #Source0Download: https://github.com/wernerd/ZRTPCPP/releases
