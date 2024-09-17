@@ -1,0 +1,10 @@
+--- ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.h.orig	2020-02-01 19:04:00.000000000 +0100
++++ ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.h	2024-09-17 18:37:27.711672819 +0200
+@@ -24,6 +24,7 @@
+  * @{
+  */
+ 
++#include <stdbool.h>
+ #include <string.h>
+ #if !(defined(_WIN32) || defined(_WIN64))
+ #include <unistd.h>

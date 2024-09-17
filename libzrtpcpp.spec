@@ -9,16 +9,17 @@
 Summary:	GNU RTP stack for the zrtp protocol specification
 Summary(pl.UTF-8):	Stos GNU RTP dla specyfikacji protokołu zrtp
 Name:		libzrtpcpp
-Version:	4.6.3
-Release:	4
-License:	LGPL v3+ (core), GPL v3+ (CCRTP client), for reference (Tivi client)
+Version:	4.7.0
+Release:	1
+License:	Apache v2.0 (core), GPL v3+ (CCRTP client), for reference (Tivi client)
 Group:		Libraries
-#Source0Download: https://github.com/wernerd/ZRTPCPP/releases
-Source0:	https://github.com/wernerd/ZRTPCPP/archive/V%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	ccfaab35e2103033d9c414fee3d46a75
+#Source0Download: https://github.com/wernerd/ZRTPCPP/tags
+Source0:	https://github.com/wernerd/ZRTPCPP/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	24bcaa5ee64083e9da76ee3cb68c90a3
 Patch0:		%{name}-java.patch
+Patch1:		%{name}-includes.patch
 URL:		http://www.gnutelephony.org/index.php/GNU_ZRTP
-BuildRequires:	cmake >= 2.6
+BuildRequires:	cmake >= 3.0
 %{?with_ccrtp:BuildRequires:	ccrtp-devel >= 2.0.0}
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libstdc++-devel
@@ -134,6 +135,7 @@ Pliki programistyczne biblioteki klienckiej ZRTP tivi.
 %prep
 %setup -q -n ZRTPCPP-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if %{with ccrtp}
